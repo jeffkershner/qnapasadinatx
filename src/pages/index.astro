@@ -4,7 +4,10 @@ import Section from "../components/Section.astro";
 import Base from "../layouts/Base.astro";
 
 const events = await Astro.glob("../events/*.md");
-const downloads = await Astro.glob("../../public/archives/*");
+const PUBLIC_DIR = "../../public";
+const downloads = Object.keys(
+  import.meta.glob("../../public/archives/*", { as: "url" })
+).map((file) => file.replace(PUBLIC_DIR, ""));
 ---
 
 <Base title="qnapasadinatx">
@@ -28,14 +31,8 @@ const downloads = await Astro.glob("../../public/archives/*");
         {
           downloads.slice(0, 3).map((file) => (
             <div class="grid">
-              <a
-                download
-                href={`${file.default.replace("/public", "")}`}
-                class="link"
-              >
-                <h3 class="text-3xl">
-                  {file.default.replace("/public/archives/", "")}
-                </h3>
+              <a download href={`${file}`} class="link">
+                <h3 class="text-3xl">{file.replace("/archives/", "")}</h3>
               </a>
             </div>
           ))
