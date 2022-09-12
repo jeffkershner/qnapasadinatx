@@ -1,96 +1,95 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import Base from "../layouts/Base.astro";
+
+const events = await Astro.glob("../events/*.md");
+const downloads = await Astro.glob("../../public/archives/*");
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Chat"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
-
-<style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
-
-	h1 {
-		margin: 2rem 0;
-	}
-
-	main {
-		margin: auto;
-		padding: 1em;
-		max-width: 60ch;
-	}
-
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
-
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		background: #4f39fa;
-		padding: 1rem;
-		border-radius: 0.4rem;
-		color: var(--color-bg);
-	}
-
-	.instructions code {
-		font-size: 0.875em;
-		border: 0.1em solid var(--color-border);
-		border-radius: 4px;
-		padding: 0.15em 0.25em;
-	}
-
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+<Base title="qnapasadinatx">
+  <Hero />
+  <div class="grid lg:grid-cols-2 container mx-auto">
+    <Section title="Upcoming Events" id="hi">
+      <div class="grid gap-5 py-10">
+        {
+          events.slice(0, 3).map((event) => (
+            <div class="grid">
+              <span class="text-sm opacity-75">{event.frontmatter.date}</span>
+              <h3 class="font-serif text-5xl">{event.frontmatter.title}</h3>
+            </div>
+          ))
+        }
+      </div>
+      <a class="btn" href="/events">View All</a>
+    </Section>
+    <Section title="Most Recent Downloads" id="hi">
+      <div class="grid gap-5 py-10">
+        {
+          downloads.slice(0, 3).map((file) => (
+            <div class="grid">
+              <a
+                download
+                href={`${file.default.replace("/public", "")}`}
+                class="link"
+              >
+                <h3 class="text-3xl">
+                  {file.default.replace("/public/archives/", "")}
+                </h3>
+              </a>
+            </div>
+          ))
+        }
+        <div>
+          <h3 class="text-xl font-semibold">Rules and Regulations</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta et
+            ab delectus nam voluptatem obcaecati error iure cumque possimus
+            ducimus tempora pariatur blanditiis reiciendis, harum aperiam vel
+            beatae officia sed.
+          </p>
+        </div>
+      </div>
+      <a class="btn" href="/archives">View All</a>
+    </Section>
+  </div>
+  <div class="bg-base-200">
+    <footer
+      class="footer p-10 container mx-auto text-base-content lg:grid-cols-2 grid-flow-row"
+    >
+      <div>
+        <span class="footer-title">Services</span>
+        <a class="link link-hover">Branding</a>
+        <a class="link link-hover">Design</a>
+        <a class="link link-hover">Marketing</a>
+        <a class="link link-hover">Advertisement</a>
+      </div>
+      <div>
+        <span class="footer-title">Join our mailing list</span>
+        <form data-netlify="true" name="mailing-list">
+          <div class="form-control w-80">
+            <label for="email" class="label">
+              <span class="label-text">Enter your email address</span>
+            </label>
+            <div class="relative">
+              <input
+                type="email"
+                name="email"
+                placeholder="username@site.com"
+                class="input input-bordered w-full pr-16"
+                required
+              />
+              <button
+                class="btn btn-primary absolute top-0 right-0 rounded-l-none"
+                >Subscribe</button
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-span-full text-center">
+        <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+      </div>
+    </footer>
+  </div>
+</Base>

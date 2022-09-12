@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^1.0.0
   astro: ^1.2.1
+  astro-google-fonts-optimizer: ^0.2.1
   autoprefixer: ^10.4.9
   daisyui: ^2.27.0
   postcss: ^8.4.16
@@ -14,6 +15,7 @@ dependencies:
   astro: 1.2.1
 
 devDependencies:
+  astro-google-fonts-optimizer: 0.2.1
   autoprefixer: 10.4.9_postcss@8.4.16
   daisyui: 2.27.0_sgpsnuuprrt5xbm24hei2nffhq
   postcss: 8.4.16
@@ -708,6 +710,10 @@ packages:
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /astro-google-fonts-optimizer/0.2.1:
+    resolution: {integrity: sha512-oHKx31xdENgM+hkaX3sRpeEn8XmMpVVNwP2N6HYHzaRkl2m5CrnsnEef4ukwaJSB3UXteYrixAVD2PUZhTH7mQ==}
+    dev: true
 
   /astro/1.2.1:
     resolution: {integrity: sha512-bNWrYALx2o15QPfF0QKUI6UXZa6FQgprH4hQI742VHl4FGSizCPb1CVejyrIt4pKDvGcM2LUW/J2A5yZ8eIU1A==}

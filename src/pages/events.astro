@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+
+const events = await Astro.glob("../events/*.md");
+---
+
+<Base title="Events - qnapasadinatx">
+  <div class="container mx-auto p-5 grid gap-5 py-10">
+    {
+      events.map((event) => (
+        <div class="grid">
+          <span class="text-sm opacity-75">{event.frontmatter.date}</span>
+          <h3 class="font-serif text-5xl">{event.frontmatter.title}</h3>
+          <p>{event.frontmatter.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</Base>

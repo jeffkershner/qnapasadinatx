@@ -1,0 +1,12 @@
+---
+export interface Props {
+  title: string;
+  [key: string]: unknown;
+}
+const { title } = Astro.props as Props;
+---
+
+<div class="container bg-base-100 p-5 mx-auto" {...Astro.props}>
+  <h2 class="font-serif uppercase text-xl">{title}</h2>
+  <slot />
+</div>

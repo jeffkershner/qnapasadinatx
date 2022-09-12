@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+
+const downloads = await Astro.glob("../../public/archives/*");
+---
+
+<Base title="Events - qnapasadinatx">
+  <div class="container mx-auto p-5 grid gap-5 py-10">
+    {
+      downloads.map((file) => (
+        <a
+          download
+          href={`${file.default.replace("/public", "")}`}
+          class="link"
+        >
+          {file.default.replace("/public/archives/", "")}
+        </a>
+      ))
+    }
+  </div>
+</Base>
