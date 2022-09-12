@@ -13,6 +13,7 @@ const links = [
     href: "/archives",
   },
   {
+    cta: true,
     title: "Contact Us",
     href: "/contact",
   },
@@ -41,12 +42,8 @@ const links = [
         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
       >
         {
-          links.map(({ title, href }) => (
-            <li
-              class={`rounded-lg ${
-                Astro.url.pathname === href ? "bg-primary text-white" : ""
-              }`}
-            >
+          links.map(({ title, href, cta }) => (
+            <li class={`rounded-lg ${cta ? "bg-primary text-white" : ""}`}>
               <a {href}>{title}</a>
             </li>
           ))
@@ -58,12 +55,8 @@ const links = [
   <div class="navbar-end hidden lg:flex">
     <ul class="menu menu-horizontal p-0 gap-2">
       {
-        links.map(({ title, href }) => (
-          <li
-            class={`rounded-lg ${
-              Astro.url.pathname === href ? "bg-primary text-white" : ""
-            }`}
-          >
+        links.map(({ title, href, cta }) => (
+          <li class={`rounded-lg ${cta ? "bg-primary text-white" : ""}`}>
             <a {href}>{title}</a>
           </li>
         ))

@@ -13,7 +13,7 @@ const downloads = Object.keys(
 <Base title="qnapasadinatx">
   <Hero />
   <div class="grid lg:grid-cols-2 container mx-auto">
-    <Section title="Upcoming Events" id="hi">
+    <Section title="Upcoming Events">
       <div class="grid gap-5 py-10">
         {
           events.slice(0, 3).map((event) => (
@@ -26,7 +26,7 @@ const downloads = Object.keys(
       </div>
       <a class="btn" href="/events">View All</a>
     </Section>
-    <Section title="Most Recent Downloads" id="hi">
+    <Section title="Most Recent Downloads">
       <div class="grid gap-5 py-10">
         {
           downloads.slice(0, 3).map((file) => (
@@ -49,44 +49,5 @@ const downloads = Object.keys(
       </div>
       <a class="btn" href="/archives">View All</a>
     </Section>
-  </div>
-  <div class="bg-base-200">
-    <footer
-      class="footer p-10 container mx-auto text-base-content lg:grid-cols-2 grid-flow-row"
-    >
-      <div>
-        <span class="footer-title">Services</span>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
-      </div>
-      <div>
-        <span class="footer-title">Join our mailing list</span>
-        <form data-netlify="true" name="mailing-list">
-          <div class="form-control w-80">
-            <label for="email" class="label">
-              <span class="label-text">Enter your email address</span>
-            </label>
-            <div class="relative">
-              <input
-                type="email"
-                name="email"
-                placeholder="username@site.com"
-                class="input input-bordered w-full pr-16"
-                required
-              />
-              <button
-                class="btn btn-primary absolute top-0 right-0 rounded-l-none"
-                >Subscribe</button
-              >
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="col-span-full text-center">
-        <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
-      </div>
-    </footer>
   </div>
 </Base>
